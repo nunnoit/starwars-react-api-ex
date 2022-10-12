@@ -1,3 +1,11 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+.topMod{
+    margin-top: 200px;
+}
+.iconMod i{
+    font-size: 50px;
+    padding-bottom: 20px;
+    padding-top: 10%;
+}

@@ -5,6 +5,7 @@ export const planetStore = {
 
 export function planetActions(getStore, getActions, setStore) {
     const BASE_URL = process.env.BASE_URL;
+    //const BASE_URL2 = process.env.BASE_URL2;
     return {
         getPlanets: async () => {
             //console.log(BASE_URL)
@@ -24,10 +25,13 @@ export function planetActions(getStore, getActions, setStore) {
 
         getSinglePlanet: async (numero) => {
             let resultado = await fetch(`${BASE_URL}planets/${numero}`)
+            let urlsingleRes = `${BASE_URL}planets/${numero}`;
+            console.log('url SINGLE res:', urlsingleRes);
+            
             if (resultado.ok) {
                 alert("Se trajo correctamente el planeta solicitado")
                 let resultadoJSON = await resultado.json()
-                console.log("resultadoJSON: ", resultadoJSON.result)
+                console.log("resultadoJSON SINGLE PLANET : ", resultadoJSON)
                 let store = getStore();
                 setStore({ ...store, planet: resultadoJSON.result })
                 return resultadoJSON
