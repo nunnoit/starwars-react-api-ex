@@ -25,6 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       ...planetStore,
       ...personsStore,
       ...starshipsStore,
+      favorites : []
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -61,7 +62,37 @@ const getState = ({ getStore, getActions, setStore }) => {
       ...planetActions(getStore, getActions, setStore),
       ...personActions(getStore, getActions, setStore),
       ...starshipActions(getStore, getActions, setStore),
-    },
+
+      getLocalStorageSW: () => {
+        console.log('test localstorage1', window.localStorage);
+        
+      if (window.localStorage !== undefined) {
+				const data = window.localStorage.getItem('SWstorage');
+        console.log('test localstorage2', window.localStorage);
+        console.log('test localstorage3 ', data);
+        let allData = JSON.parse(data)
+				data !== null ? setStore(allData) : null;
+        console.log('test localstorage4', allData.demo[0].title);
+
+			}
+      },
+      addFavorite: (nuevo) => {
+        const store = getStore();
+        let arrayAux = store.favorites.slice();
+        arrayAux.push(nuevo)
+        setStore({...store, favorites:arrayAux})
+      },
+      removeFavorite: (aux) => {
+				const store = getStore();
+        //let fav = store.favorites;
+        const favRemove = store.favorites.filter((item, index) => index != aux);
+        console.log('itemZ1', favRemove); 
+        console.log('itemZ2', aux);
+        
+				setStore({...store,favorites: favRemove})							
+				//setStore({favorites: favRemove})
+				}
+    }
   };
 };
 

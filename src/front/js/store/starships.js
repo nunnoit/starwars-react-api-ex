@@ -1,7 +1,6 @@
 export const starshipsStore = {
-   
-    starships: [], //la lista de starships
-    starship: {} //starship en específico
+    starships: [],
+    starship: {}
 };
 
 export function starshipActions(getStore, getActions, setStore) {
@@ -11,7 +10,7 @@ export function starshipActions(getStore, getActions, setStore) {
       //console.log(BASE_URL)
       let resultado = await fetch(`${BASE_URL}starships`);
       if (resultado.ok) {
-        alert("Se trajo correctamente la lista de starships");
+        console.log("Se trajo correctamente la lista de starships");
         let resultadoJSON = await resultado.json();
         console.log("resultadoJSON: ", resultadoJSON.results)
         let store = getStore();
@@ -20,7 +19,7 @@ export function starshipActions(getStore, getActions, setStore) {
         setStore({ ...store, starships: resultadoJSON.results });
         return resultadoJSON;
       } else {
-        alert("hubo un error en la petición de starships");
+        console.log("hubo un error en la petición de starships");
         return false;
       }
     },
@@ -28,14 +27,14 @@ export function starshipActions(getStore, getActions, setStore) {
     getStarship: async (numero) => {
       let resultado = await fetch(`${BASE_URL}starships/${numero}`);
       if (resultado.ok) {
-        alert("Se trajo correctamente el starship solicitado");
+        console.log("Se trajo correctamente el starship solicitado");
         let resultadoJSON = await resultado.json();
-        console.log("resultadoJSON: ", resultadoJSON.result);
+        console.log("resJSON: ", resultadoJSON.result);
         let store = getStore();
         setStore({ ...store, starship: resultadoJSON.result });
         return resultadoJSON;
       } else {
-        alert("hubo un error en la petición del starship2");
+        console.log("Err starships req");
         return false;
       }
     },

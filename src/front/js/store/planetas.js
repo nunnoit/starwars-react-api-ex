@@ -11,14 +11,14 @@ export function planetActions(getStore, getActions, setStore) {
             //console.log(BASE_URL)
             let resultado = await fetch(`${BASE_URL}planets`)
             if (resultado.ok) {
-                alert("Se trajo correctamente la lista de planetas")
+                console.log("Se trajo correctamente la lista de planetas")
                 let resultadoJSON = await resultado.json()
                 //console.log("resultadoJSON: ", resultadoJSON.results)
                 let store = getStore();
                 setStore({ ...store, planets: resultadoJSON.results })
                 return resultadoJSON
             } else {
-                alert("hubo un error en la petición de planetas")
+                console.log("hubo un error en la petición de planetas")
                 return false
             }
         },
@@ -29,14 +29,14 @@ export function planetActions(getStore, getActions, setStore) {
             console.log('url SINGLE res:', urlsingleRes);
             
             if (resultado.ok) {
-                alert("Se trajo correctamente el planeta solicitado")
+                console.log("Se trajo correctamente el planeta solicitado")
                 let resultadoJSON = await resultado.json()
                 console.log("resultadoJSON SINGLE PLANET : ", resultadoJSON)
                 let store = getStore();
                 setStore({ ...store, planet: resultadoJSON.result })
                 return resultadoJSON
             } else {
-                alert("hubo un error en la petición del planeta")
+                console.log("hubo un error en la petición del planeta")
                 return false
             }
         }

@@ -20,7 +20,6 @@ export const PersonSingle = props => {
 	return (
 		<>
 		  <div className="jumbotron topMod">
-			{/* <h1 className="display-4">El nombre del Planeta es: {store.planet.properties ? store.planet.properties.climate : "no ha cargado"} </h1> */}
 			<div className="row">
 			  <div className="col-6 text-center iconMod">
 			  <i className="fa-regular fa-circle-user text-white"></i>

@@ -45,7 +45,7 @@ body{
     background-color: black;
 }
 
-.imgMod {
+.logo {
     width: 130px;
     height: 60px;
 }
@@ -67,4 +67,9 @@ body{
 
 .txtMod {
   color: black;
+}
+
+.imgMod {
+  width: 250px;
+  height: 300px;
 }
